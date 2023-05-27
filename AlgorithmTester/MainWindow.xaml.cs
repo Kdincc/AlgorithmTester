@@ -98,7 +98,7 @@ namespace AlgorithmTester
             var values = manager.Results.Values.ToArray();
             var names = manager.Results.Keys.ToArray();
 
-            ResultPlot.CreatePlot(values, names);
+            ResultPlot.CreateTimePlot(values, names);
 
             manager.Results.Clear();
            

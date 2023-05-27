@@ -9,7 +9,7 @@ namespace AlgorithmTester
 {
     public static class TimePlot
     {
-        public static void CreatePlot(this WpfPlot plot, double[] values, string[] names)
+        public static void CreateTimePlot(this WpfPlot plot, double[] values, string[] names)
         {
             double[] positions = new double[values.Length];
 
