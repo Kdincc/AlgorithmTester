@@ -11,7 +11,7 @@ namespace AlgorithmTester
     {
         public static int[] GetArray(this TextBox textBox)
         {
-            var numbers = textBox.Text.Split(',');
+            var numbers = textBox.Text.Split(',', StringSplitOptions.RemoveEmptyEntries);
             
             var array = numbers.Select(x => Convert.ToInt32(x)).ToArray();
 
