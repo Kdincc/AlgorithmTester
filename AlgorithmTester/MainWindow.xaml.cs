@@ -15,7 +15,6 @@ namespace AlgorithmTester
     public partial class MainWindow : Window
     {
         private const int SLIDER_VALUE_MULTIPLIER = 100;
-        private readonly SortedDictionary<string, double> results;
         private readonly ISorter sorter;
         private readonly IExecuteTimeManager manager;
 
