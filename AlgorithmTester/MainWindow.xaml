@@ -23,7 +23,9 @@
             <Grid Grid.Row="0">
                 <ScrollViewer Margin="3" HorizontalScrollBarVisibility="Visible">
                     <TextBox x:Name="InputBox" AcceptsReturn="True" PreviewKeyDown="InputBox_PreviewKeyDown">
-                        
+                        <TextBox.ToolTip>
+                            Field for array input in format: 1,2,3,4,5,6,7,8.....
+                        </TextBox.ToolTip>
                     </TextBox>
 
                 </ScrollViewer>
