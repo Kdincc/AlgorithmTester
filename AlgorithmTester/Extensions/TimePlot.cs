@@ -21,6 +21,8 @@ namespace AlgorithmTester
             var bar = plot.Plot.AddBar(values, positions);
             bar.ShowValuesAboveBars= true;
             plot.Plot.XTicks(positions, names);
+            plot.Plot.YLabel("Time in ms");
+            plot.Plot.XLabel("Sort Algorithms");
             plot.Plot.SetAxisLimits(yMin: 0);
 
 
