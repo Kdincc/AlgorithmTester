@@ -59,6 +59,9 @@
                     </TextBlock>
 
                     <Slider x:Name="SizeSlider" Value="0" Minimum="0" Maximum="100" SelectionStart="0" IsSelectionRangeEnabled="True" Margin="1,3,0,0" ValueChanged="Slider_ValueChanged">
+                        <Slider.ToolTip>
+                            Slider fo size picking for array with random values 0 - 1000
+                        </Slider.ToolTip>
 
                     </Slider>
                     
