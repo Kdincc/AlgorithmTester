@@ -28,7 +28,6 @@ namespace AlgorithmTester
 
             sorter = provider.GetRequiredService<ISorter>();
             manager = provider.GetRequiredService<IExecuteTimeManager>();
-            results = new SortedDictionary<string, double>();
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
