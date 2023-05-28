@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using ScottPlot;
+﻿using AlgorithmTester.Extensions;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,7 +54,15 @@ namespace AlgorithmTester
 
             if (InputBox.IsEnabled)
             {
-                array = InputBox.GetArray();
+                if (InputBox.Text.IsArrayString())
+                {
+                    array = InputBox.GetArray();
+                }
+                else
+                {
+                    MessageBox.Show ("Incorrect input! Correct input format is: 1, 2, 3, 4, 5, 6...");
+                    return;
+                }
             }
             else
             {
@@ -101,7 +108,6 @@ namespace AlgorithmTester
             ResultPlot.CreateTimePlot(values, names);
 
             manager.Results.Clear();
-           
         }
 
         private void InputBox_PreviewKeyDown(object sender, KeyEventArgs e)

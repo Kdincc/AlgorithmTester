@@ -21,7 +21,10 @@ namespace AlgorithmTester
 
         public void AddResult(string name, Action<int[]> alg, int[] array)
         {
-            time = _timeHandler.GetExecutionTime(alg, array);
+            int[] tempArray = new int[array.Length];
+            array.CopyTo(tempArray, 0);
+
+            time = _timeHandler.GetExecutionTime(alg, tempArray);
             Results.Add(name, time);
         }
     }

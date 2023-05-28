@@ -124,7 +124,7 @@ namespace AlgorithmTester
             RecQuickSort(arr, 0, arr.Length - 1);
         }
 
-        void RecQuickSort(int[] arr, int low, int high)
+        private void RecQuickSort(int[] arr, int low, int high)
         {
             if (low < high)
             {
@@ -135,7 +135,7 @@ namespace AlgorithmTester
             }
         }
 
-        int Partition(int[] arr, int low, int high)
+        private int Partition(int[] arr, int low, int high)
         {
             int pivot = arr[high];
             int i = low - 1;
