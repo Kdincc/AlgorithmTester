@@ -12,6 +12,10 @@ namespace AlgorithmTester
         Selection,
         Quick,
         Shell,
-        Merge
+        Merge,
+        Bubble,
+        Radix,
+        Counting,
+        Heap
     }
 }

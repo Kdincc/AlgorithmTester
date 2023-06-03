@@ -12,12 +12,10 @@ namespace AlgorithmTester.Extensions
         public static bool IsArrayString(this string str)
         {
             const string ARRAY_PATERN = "^\\d+(,\\d+)*$";
-            const string ARRAY_PATERN_WITH_SPACES = "^\\d+\\s*(,\\s*\\d+)*$\r\n";
 
             Regex regex = new Regex(ARRAY_PATERN);
-            Regex spaceRegex = new Regex(ARRAY_PATERN_WITH_SPACES);
 
-            if (regex.IsMatch(str) || spaceRegex.IsMatch(str))
+            if (regex.IsMatch(str))
             {
                 return true;
             }

@@ -17,5 +17,13 @@ namespace AlgorithmTester
         void SelectionSort(int[] array);
 
         void MergeSort(int[] array);
+
+        void HeapSort(int[] array);
+
+        void BubbleSort(int[] array);
+
+        void CountingSort(int[] array);
+
+        void RadixSort(int[] array);
     }
 }

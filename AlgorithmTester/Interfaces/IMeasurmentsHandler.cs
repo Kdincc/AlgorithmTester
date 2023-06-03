@@ -9,8 +9,8 @@ using System.Windows.Media.Media3D;
 
 namespace AlgorithmTester
 {
-    public interface ITimeHandler
+    public interface IMeasurmentsHandler
     {
-        double GetExecutionTime(Action<int[]> algorithm, int[] array);
+        double GetMeasurments(Action<int[]> algorithm, int[] array);
     }
 }

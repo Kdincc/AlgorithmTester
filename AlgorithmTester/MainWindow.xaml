@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:AlgorithmTester"
         xmlns:ScottPlot="clr-namespace:ScottPlot;assembly=ScottPlot.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="AlgorithmTester" Height="450" Width="800">
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.4*"/>
@@ -31,14 +31,19 @@
                 </ScrollViewer>
             </Grid>
 
-            <GroupBox Grid.Row="1" Margin="3" Header="Tools">
+            <GroupBox x:Name="toolsBox" Grid.Row="1" Margin="3" Header="Tools">
                 <StackPanel>
-                    <CheckBox x:Name="QuickSortCheckBox" Margin="1,2,0,0">
-                        Quick Sort
+
+                    <CheckBox x:Name="BubbleSortCheckBox" Margin="1,2,0,0">
+                        Bubble sort
                     </CheckBox>
 
                     <CheckBox x:Name="InsertionSortCheckBox" Margin="1,2,0,0">
                         Insertion Sort
+                    </CheckBox>
+
+                    <CheckBox x:Name="SelectionSortCheckBox" Margin="1,2,0,0">
+                        Selection Sort
                     </CheckBox>
 
                     <CheckBox x:Name="ShellSortCheckBox" Margin="1,2,0,0">
@@ -48,9 +53,23 @@
                     <CheckBox x:Name="MergeSortCheckBox" Margin="1,2,0,0">
                         Merge sort
                     </CheckBox>
+                    
+                    <CheckBox x:Name="QuickSortCheckBox" Margin="1,2,0,0">
+                        Quick Sort
+                    </CheckBox>
 
-                    <CheckBox x:Name="SelectionSortCheckBox" Margin="1,2,0,0">
-                        Selection Sort
+                    <CheckBox x:Name="CountingSortCheckBox" Margin="1,2,0,0">
+                        Counting sort
+                    </CheckBox>
+
+
+                    <CheckBox x:Name="RadixSortCheckBox" Margin="1,2,0,0">
+                        Radix sort
+                    </CheckBox>
+
+
+                    <CheckBox x:Name="HeapSortCheckBox" Margin="1,2,0,0">
+                        Heap sort
                     </CheckBox>
 
                     <TextBlock x:Name="ArraySizeBox" Margin="1,5,0,0" HorizontalAlignment="Left" Width="60" IsEnabled="True">
@@ -84,12 +103,15 @@
         </GridSplitter>
 
         <Grid Grid.Column="2">
-            <Border BorderBrush="#c9cbca" BorderThickness="2">
-                <ScottPlot:WpfPlot x:Name="ResultPlot">
+            <TabControl>
+                <TabItem Header="Time measurments">
+                    <TabItem.Content>
+                        <ScottPlot:WpfPlot x:Name="TimePlot">
 
-                </ScottPlot:WpfPlot>
-            </Border>
-            
+                        </ScottPlot:WpfPlot>
+                    </TabItem.Content>
+                </TabItem>
+            </TabControl>
         </Grid>
     </Grid>
 </Window>

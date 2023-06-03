@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AlgorithmTester
 {
-    public interface IExecuteTimeManager
+    public interface IMeasurmentsManager
     {
-        SortedDictionary<string, double> Results { get; }
+        Dictionary<string, double> Results { get; }
 
         void AddResult(string name, Action<int[]> alg, int[] array);
     }

@@ -9,11 +9,11 @@ namespace AlgorithmTester
 {
     public static class DependancyInjection
     {
-        public static IServiceCollection RegisterServices(this IServiceCollection services) 
+        public static IServiceCollection RegisterCoreServices(this IServiceCollection services) 
         {
             services.AddTransient<ISorter, Sorter>();
-            services.AddTransient<ITimeHandler, SortTimeCheker>();
-            services.AddTransient<IExecuteTimeManager, ExecuteTimeManager>();
+            services.AddTransient<IMeasurmentsHandler, SortTimeCheker>();
+            services.AddTransient<IMeasurmentsManager, ExecuteTimeManager>();
 
             return services;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -184,5 +185,187 @@ namespace AlgorithmTester
                 gap /= 2;
             }
         }
+
+        #region RadixSort
+
+        // Метод для поиска максимального элемента в массиве
+        private int FindMax(int[] array)
+        {
+            int max = array[0];
+            int n = array.Length;
+            for (int i = 1; i < n; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                }
+            }
+            return max;
+        }
+
+        // Метод для выполнения сортировки по разрядам
+        public void RadixSort(int[] array)
+        {
+            int max = FindMax(array);
+
+            for (int exp = 1; max / exp > 0; exp *= 10)
+            {
+                CountingSort(array, exp);
+            }
+        }
+
+        // Метод для выполнения сортировки подсчетом
+        private void CountingSort(int[] array, int exp)
+        {
+            int n = array.Length;
+            int[] output = new int[n];
+            int[] count = new int[10];
+            Array.Fill(count, 0);
+
+            for (int i = 0; i < n; i++)
+            {
+                count[(array[i] / exp) % 10]++;
+            }
+
+            for (int i = 1; i < 10; i++)
+            {
+                count[i] += count[i - 1];
+            }
+
+            for (int i = n - 1; i >= 0; i--)
+            {
+                output[count[(array[i] / exp) % 10] - 1] = array[i];
+                count[(array[i] / exp) % 10]--;
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+                array[i] = output[i];
+            }
+        }
+
+        #endregion
+
+        public void CountingSort(int[] array)
+        {
+            int n = array.Length;
+            int[] output = new int[n];
+
+            // Находим максимальное значение в массиве
+            int max = array[0];
+            for (int i = 1; i < n; i++)
+            {
+                if (array[i] > max)
+                {
+                    max = array[i];
+                }
+            }
+
+            // Создаем вспомогательный массив для подсчета количества элементов
+            int[] count = new int[max + 1];
+            Array.Fill(count, 0);
+
+            // Подсчитываем количество вхождений каждого элемента
+            for (int i = 0; i < n; i++)
+            {
+                count[array[i]]++;
+            }
+
+            // Модифицируем вспомогательный массив, чтобы он содержал позиции элементов в отсортированном порядке
+            for (int i = 1; i <= max; i++)
+            {
+                count[i] += count[i - 1];
+            }
+
+            // Помещаем элементы в отсортированный массив в соответствии с их позициями из вспомогательного массива
+            for (int i = n - 1; i >= 0; i--)
+            {
+                output[count[array[i]] - 1] = array[i];
+                count[array[i]]--;
+            }
+
+            // Копируем отсортированный массив обратно в исходный массив
+            for (int i = 0; i < n; i++)
+            {
+                array[i] = output[i];
+            }
+        }
+
+        public void BubbleSort(int[] array)
+        {
+            int n = array.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (array[j] > array[j + 1])
+                    {
+                        int temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+        }
+
+        #region HeapSort
+
+        // O( n log(n) )
+        public void HeapSort(int[] array)
+        {
+            int n = array.Length;
+
+            // Построение кучи (Heapify)
+            for (int i = n / 2 - 1; i >= 0; i--)
+            {
+                Heapify(array, n, i);
+            }
+
+            // Извлечение элементов из кучи один за другим
+            for (int i = n - 1; i >= 0; i--)
+            {
+                // Перемещаем текущий корень в конец массива
+                int temp = array[0];
+                array[0] = array[i];
+                array[i] = temp;
+
+                // Вызываем Heapify на уменьшенной куче
+                Heapify(array, i, 0);
+            }
+        }
+
+        // Метод для преобразования поддерева с корнем i в кучу
+        private static void Heapify(int[] array, int n, int i)
+        {
+            int largest = i; // Инициализируем наибольший элемент как корень
+            int leftChild = 2 * i + 1; // Левый потомок
+            int rightChild = 2 * i + 2; // Правый потомок
+
+            // Если левый потомок больше корня
+            if (leftChild < n && array[leftChild] > array[largest])
+            {
+                largest = leftChild;
+            }
+
+            // Если правый потомок больше текущего наибольшего элемента
+            if (rightChild < n && array[rightChild] > array[largest])
+            {
+                largest = rightChild;
+            }
+
+            // Если наибольший элемент не является корневым
+            if (largest != i)
+            {
+                // Обмен значениями
+                int swap = array[i];
+                array[i] = array[largest];
+                array[largest] = swap;
+
+                // Рекурсивно Heapify на затронутой поддереве
+                Heapify(array, n, largest);
+            }
+        }
+
+        #endregion
     }
 }

@@ -7,25 +7,33 @@ using System.Threading.Tasks;
 
 namespace AlgorithmTester
 {
-    public class ExecuteTimeManager : IExecuteTimeManager
+    public class ExecuteTimeManager : IMeasurmentsManager
     {
-        public SortedDictionary<string, double> Results { get; }
-        private ITimeHandler _timeHandler;
-        private double time = 0;
+        public Dictionary<string, double> Results { get; }
+        private readonly IMeasurmentsHandler _measurmentHandler;
+        private double totalMeasurments = 0;
+        private const int AMOUNT_MEASUREMENTS = 5;
 
-        public ExecuteTimeManager(ITimeHandler timeHandler)
+        public ExecuteTimeManager(IMeasurmentsHandler timeHandler)
         {
-            Results = new SortedDictionary<string, double>();
-            _timeHandler = timeHandler;
+            Results = new Dictionary<string, double>();
+            _measurmentHandler = timeHandler;
         }
 
         public void AddResult(string name, Action<int[]> alg, int[] array)
         {
+            double measurmentSum = 0;
             int[] tempArray = new int[array.Length];
-            array.CopyTo(tempArray, 0);
 
-            time = _timeHandler.GetExecutionTime(alg, tempArray);
-            Results.Add(name, time);
+            for (int i = 0; i < AMOUNT_MEASUREMENTS; i++)
+            {
+                array.CopyTo(tempArray, 0);
+                measurmentSum += _measurmentHandler.GetMeasurments(alg, tempArray);
+            }
+
+            totalMeasurments = Math.Round (measurmentSum / AMOUNT_MEASUREMENTS, 4);
+
+            Results.Add(name, totalMeasurments);
         }
     }
 }
