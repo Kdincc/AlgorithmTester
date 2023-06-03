@@ -13,11 +13,12 @@ namespace AlgorithmTester
         private const int SLIDER_VALUE_MULTIPLIER = 100;
         private readonly ISorter sorter;
         private readonly IMeasurmentsManager timeManager;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            var provider = new ServiceCollection().RegisterServices().BuildServiceProvider();
+            using var provider = new ServiceCollection().RegisterServices().BuildServiceProvider();
 
             sorter = provider.GetRequiredService<ISorter>();
             timeManager = provider.GetRequiredService<IMeasurmentsManager>();
@@ -26,7 +27,7 @@ namespace AlgorithmTester
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
 
-            ((Slider)sender).SelectionEnd = e.NewValue;
+            SizeSlider.SelectionEnd = e.NewValue;
 
             int value = Convert.ToInt32(SizeSlider.Value) * SLIDER_VALUE_MULTIPLIER;
             ArraySizeBox.Text = value.ToString() + " size";
@@ -42,7 +43,7 @@ namespace AlgorithmTester
 
         private void TestButton_Click(object sender, RoutedEventArgs e)
         {
-            int[] array = new int[0];
+            int[] array;
 
             TimePlot.Plot.Clear();
 
@@ -75,7 +76,6 @@ namespace AlgorithmTester
 
             var values = timeManager.Results.Values.ToArray();
             var names = timeManager.Results.Keys.ToArray();
-
             TimePlot.CreatePlot(values, names, "Time in ms", "Algorithms");
 
             timeManager.Results.Clear();
