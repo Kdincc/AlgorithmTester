@@ -21,8 +21,6 @@ namespace AlgorithmTester
 
             sorter = provider.GetRequiredService<ISorter>();
             timeManager = provider.GetRequiredService<IMeasurmentsManager>();
-
-            
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -94,7 +92,6 @@ namespace AlgorithmTester
 
         private void BoxChecking(int[] array)
         {
-
             if ((bool)BubbleSortCheckBox.IsChecked)
             {
                 timeManager.AddResult(AlgorithmNames.Bubble.ToString(), new Action<int[]>(sorter.BubbleSort), array);

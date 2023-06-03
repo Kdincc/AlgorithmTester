@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AlgorithmTester
 {
-    public static class DependancyInjection
+    public static class DependencyInjection
     {
         public static IServiceCollection RegisterCoreServices(this IServiceCollection services) 
         {
