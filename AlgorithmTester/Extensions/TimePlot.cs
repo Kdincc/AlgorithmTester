@@ -1,10 +1,4 @@
 ﻿using ScottPlot;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorithmTester
 {
@@ -20,7 +14,7 @@ namespace AlgorithmTester
             }
 
             var bar = plot.Plot.AddBar(values, positions);
-            bar.ShowValuesAboveBars= true;
+            bar.ShowValuesAboveBars = true;
             plot.Plot.XTicks(positions, names);
             plot.Plot.YLabel(yLabelName);
             plot.Plot.XLabel(xLabelName);
@@ -30,7 +24,7 @@ namespace AlgorithmTester
             plot.Plot.SaveFig("bar_labels.png");
 
             plot.Refresh();
-            
+
         }
     }
 }

@@ -54,7 +54,7 @@ namespace AlgorithmTester
                 }
                 else
                 {
-                    MessageBox.Show ("Incorrect input! Correct input format is: 1,2,3,4,5,6...");
+                    MessageBox.Show("Incorrect input! Correct input format is: 1,2,3,4,5,6...");
                     return;
                 }
             }

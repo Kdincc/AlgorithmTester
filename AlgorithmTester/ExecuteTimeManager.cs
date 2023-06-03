@@ -1,9 +1,5 @@
-﻿using ScottPlot;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AlgorithmTester
 {
@@ -31,7 +27,7 @@ namespace AlgorithmTester
                 measurmentSum += _measurmentHandler.GetMeasurments(alg, tempArray);
             }
 
-            totalMeasurments = Math.Round (measurmentSum / AMOUNT_MEASUREMENTS, 4);
+            totalMeasurments = Math.Round(measurmentSum / AMOUNT_MEASUREMENTS, 4);
 
             Results.Add(name, totalMeasurments);
         }
