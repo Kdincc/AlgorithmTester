@@ -1,7 +1,8 @@
+
 namespace AlgorithmTester.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class SorterTests
     {
         [TestMethod]
         public void TestMethod1()
