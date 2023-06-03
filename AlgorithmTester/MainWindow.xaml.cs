@@ -17,7 +17,7 @@ namespace AlgorithmTester
         {
             InitializeComponent();
 
-            var provider = new ServiceCollection().RegisterCoreServices().BuildServiceProvider();
+            var provider = new ServiceCollection().RegisterServices().BuildServiceProvider();
 
             sorter = provider.GetRequiredService<ISorter>();
             timeManager = provider.GetRequiredService<IMeasurmentsManager>();
@@ -77,6 +77,8 @@ namespace AlgorithmTester
             var names = timeManager.Results.Keys.ToArray();
 
             TimePlot.CreatePlot(values, names, "Time in ms", "Algorithms");
+
+            timeManager.Results.Clear();
         }
 
         private void InputBox_PreviewKeyDown(object sender, KeyEventArgs e)
